@@ -31,6 +31,7 @@ Create a `.env` file:
 `touch .env`
 
 Add values for the following variables:
+
 - MYSQL_DATABASE
 - MYSQL_USER
 - MYSQL_PASSWORD
@@ -48,6 +49,7 @@ Create a `.env` file:
 `touch backend/.env`
 
 Add values for the following variables (these should match MySQL values):
+
 - TYPEORM_HOSTNAME
 - TYPEORM_USERNAME
 - TYPEORM_DATABASE
@@ -58,7 +60,6 @@ Start the server in development mode:
 
 `yarn dev`
 
-
 #### Frontend
 
 Create a `.env` file:
@@ -66,8 +67,8 @@ Create a `.env` file:
 `touch frontend/.env`
 
 Add the following variable:
-- NEXT_PUBLIC_API_URL=http://localhost:3001
 
+- NEXT_PUBLIC_API_URL=http://localhost:3001
 
 Start the server in development mode:
 
@@ -112,8 +113,8 @@ The backend is an Express application using TypeORM. We've defined a number of A
 - `POST /login`
 
   {
-    "email": "tester@shair.co",
-    "password": "secure-password-for-assessment"
+  "email": "tester@shair.co",
+  "password": "secure-password-for-assessment"
   }
 
   A route that when given a valid email/password combination, returns a login token.
@@ -121,8 +122,8 @@ The backend is an Express application using TypeORM. We've defined a number of A
 - `POST /note`
 
   {
-    "text": "Sample note!",
-    "userId": "81737cbc-52eb-433f-bafe-c6b9b36b6503"
+  "text": "Sample note!",
+  "userId": "81737cbc-52eb-433f-bafe-c6b9b36b6503"
   }
 
   Required Cookies: `token`
@@ -144,9 +145,9 @@ The backend is an Express application using TypeORM. We've defined a number of A
 - `POST /search`
 
   {
-    "text": "note substring"
-    "size": 10,
-    "skip": 0
+  "text": "note substring"
+  "size": 10,
+  "skip": 0
   }
   Returns notes containing the specified substring
 
