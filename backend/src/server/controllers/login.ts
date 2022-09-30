@@ -13,21 +13,28 @@ const users = AppDataSource.getRepository(User);
 export default class LoginController {
   @Post()
   async home(@Body() body: LoginBody, @Res() res: Response) {
-    const [user] = await users.query(`SELECT * FROM user WHERE email='${body.email}' LIMIT 1`);
+    const [user] = await users.query(
+      `SELECT * FROM user WHERE email='${body.email}' LIMIT 1`
+    );
     let authenticated = false;
     let token = null;
-    if(user) {
+    let message;
+    if (user) {
       authenticated = await bcrypt.compare(body.password, user.passwordHash);
+    } else {
+      res.status(400);
+      message = "Incorrect email or password";
     }
-    if(authenticated) {
+    if (authenticated) {
       token = randomUUID();
       user.token = token;
       await users.save(user);
     }
-    res.cookie('token', token);
+
     return {
       authenticated,
       token,
-    }
+      message,
+    };
   }
 }

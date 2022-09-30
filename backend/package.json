@@ -10,7 +10,7 @@
       "dev": "nodemon --ignore ./build -e js,ts,json,css,html --exec 'yarn build && yarn test && NODE_ENV=development yarn start'",
       "build": "yarn clean && yarn build-server",
       "lint": "eslint",
-      "test": "NODE_ENV=testing jest ./src/__tests__",
+      "test": "NODE_ENV=testing jest --detectOpenHandles ./src/__tests__ --forceExit",
       "clean": "rm -rf ./build/*",
       "build-server": "tsc",
       "typeorm": "typeorm-ts-node-commonjs",
