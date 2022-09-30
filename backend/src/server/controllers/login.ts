@@ -18,18 +18,23 @@ export default class LoginController {
     );
     let authenticated = false;
     let token = null;
+    let message;
     if (user) {
       authenticated = await bcrypt.compare(body.password, user.passwordHash);
+    } else {
+      res.status(400);
+      message = "Incorrect email or password";
     }
     if (authenticated) {
       token = randomUUID();
       user.token = token;
       await users.save(user);
     }
-    res.cookie("token", token);
+
     return {
       authenticated,
       token,
+      message,
     };
   }
 }

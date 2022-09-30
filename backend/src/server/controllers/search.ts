@@ -16,9 +16,13 @@ export default class SearchController {
       skip: body.skip,
       where: {
         text: Like(`%${body.text}%`),
-      }
+        user: {
+          //I was able to partially fix it. Now we can search by firstName. I need more time in order to figure out how fix searching by lastName either
+          firstName: Like(`%${body.owner}%`),
+        },
+      },
     });
-    return notes.map(note=>{
+    return notes.map((note) => {
       delete note.user.passwordHash;
       return note;
     });

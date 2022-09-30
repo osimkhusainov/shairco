@@ -4,6 +4,9 @@ export default class SearchBody {
   @IsString()
   text: string;
 
+  @IsString()
+  owner: string;
+
   @Max(100)
   @IsOptional()
   size: number;
