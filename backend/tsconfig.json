@@ -9,6 +9,5 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "esModuleInterop": true
-  },
-  "entities": ["__dirname + /../**/*.entity.{js,ts}"]
+  }
 }
