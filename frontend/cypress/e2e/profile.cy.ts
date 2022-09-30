@@ -8,7 +8,7 @@ describe("Login page", () => {
     cy.visit("/profile");
   });
 
-  it.skip("Check notes length from UI and API, create new Note", () => {
+  it("Check notes length from UI and API, create new Note", () => {
     cy.wait("@profile").then(({ response }) => {
       cy.findByTestId("note")
         .then((notes: any) => Cypress._.map(notes))

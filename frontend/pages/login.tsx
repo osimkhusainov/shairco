@@ -31,19 +31,24 @@ const Login: NextPage<Props> = ({ loggedIn }: Props) => {
         "Content-Type": "application/json",
       },
     }).then(async (response) => {
-      const login = await parseJsonResponse(response);
-      if (login.authenticated) {
-        setError("");
-        document.cookie = `token=${login.token}`;
-        router.push("/");
-      }
-      // Validate error if email or password are empty
-      if (!form.email.value.length || !form.password.value.length) {
-        setError(
-          "Your username or password are empty. Please fill all fields and try again."
-        );
-      } else {
-        setError("Your username or password was incorrect. Please try again.");
+      try {
+        const login = await parseJsonResponse(response);
+        if (login.authenticated) {
+          setError("");
+          document.cookie = `token=${login.token}`;
+          router.push("/");
+        }
+      } catch (err) {
+        // Validate error if email or password are empty
+        if (!form.email.value.length || !form.password.value.length) {
+          setError(
+            "Your username or password are empty. Please fill all fields and try again."
+          );
+        } else {
+          setError(
+            "Your username or password was incorrect. Please try again."
+          );
+        }
       }
     });
     return false;

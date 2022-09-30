@@ -34,6 +34,7 @@ const Profile: NextPage<Props> = ({ loggedIn }: Props) => {
 
   const [ownerId, setOwnerId] = useState();
   const [userName, setUserName] = useState("");
+  const [text, setText] = useState("");
   const [notes, setNotes] = useState<
     {
       id: string;
@@ -56,6 +57,8 @@ const Profile: NextPage<Props> = ({ loggedIn }: Props) => {
       headers: {
         "Content-Type": "application/json",
       },
+    }).then(() => {
+      setText("");
     });
 
     // Fetch the updated profile
@@ -79,7 +82,13 @@ const Profile: NextPage<Props> = ({ loggedIn }: Props) => {
         <label htmlFor="searchText">
           Note Content
           <br />
-          <textarea id="searchText" name="searchText" />
+          <textarea
+            id="searchText"
+            name="searchText"
+            //fixed UI bug, after submitting we should cleare textarea value
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
         </label>
         <br />
         <input type="hidden" name="ownerId" value={ownerId || ""} />
