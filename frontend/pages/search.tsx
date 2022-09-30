@@ -33,14 +33,14 @@ const Search: NextPage<Props> = ({ loggedIn }: Props) => {
   useEffect(() => {
     const searchEntries = [];
     searchEntries.push(["text", searchText]);
+    // we could not find note by owner
+    //I was able to partially fix it. Now we can search by firstName. I need more time in order to figure out how fix searching by lastName either
+    searchEntries.push(["owner", searchOwner]);
     if (page) {
       searchEntries.push(["skip", PAGE_SIZE * page]);
     }
     if (PAGE_SIZE) {
       searchEntries.push(["size", PAGE_SIZE]);
-    }
-    if (searchOwner) {
-      searchEntries.push(["owner", searchOwner]);
     }
     const abortController = new AbortController();
     const signal = abortController.signal;
@@ -122,8 +122,10 @@ const Search: NextPage<Props> = ({ loggedIn }: Props) => {
               key={note.id}
               href={`/notes/${note.id}`}
               className={styles.card}
+              test-id="note"
             >
               <h2>Note {`${note.id}`} &rarr;</h2>
+              {/* we used to receive "Owner: [object Object]" */}
               <h4>Owner: {`${note.user.firstName} ${note.user.lastName}`}</h4>
               <p>{note.text.split("\n")[0].substr(0, 255)}</p>
             </a>

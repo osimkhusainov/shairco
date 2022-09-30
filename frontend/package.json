@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "npx cypress open",
+    "cy:run": "npx cypress run --spec 'cypress/**/*.cy.ts'"
   },
   "dependencies": {
     "cookies-next": "^2.1.1",
@@ -17,7 +19,7 @@
   "devDependencies": {
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
-    "cypress": "^9.7.0",
+    "cypress": "^10.9.0",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.1",
     "typescript": "4.8.3"

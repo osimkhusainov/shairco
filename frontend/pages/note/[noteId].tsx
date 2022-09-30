@@ -17,9 +17,10 @@ export interface Props {
 
 const NoteById: NextPage<Props> = ({ loggedIn }: Props) => {
   const router = useRouter();
-  console.log(router.query);
-  const { id: noteId } = router.query;
+  const { noteId } = router.query;
+  console.log(noteId);
   const [note, setNote] = useState<{ id: string; text: string }>();
+  console.log(note);
   const requestPending = useRef(false);
   useEffect(() => {
     if (!noteId) {

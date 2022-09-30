@@ -83,14 +83,19 @@ const Profile: NextPage<Props> = ({ loggedIn }: Props) => {
         </label>
         <br />
         <input type="hidden" name="ownerId" value={ownerId || ""} />
-        <input type="submit" disabled={!ownerId} />
+        <input type="submit" name="submit" disabled={!ownerId} />
       </form>
 
       <h2>Previous Notes</h2>
       <div className={styles.grid}>
         {notes.map((note) => {
           return (
-            <a key={note.id} href={`/note/${note.id}`} className={styles.card}>
+            <a
+              key={note.id}
+              href={`/note/${note.id}`}
+              className={styles.card}
+              test-id="note"
+            >
               <h2>Note {`${note.id}`} &rarr;</h2>
               <h4>Owner: {userName}</h4>
               <p>{note.text.split("\n")[0].substr(0, 255)}</p>
