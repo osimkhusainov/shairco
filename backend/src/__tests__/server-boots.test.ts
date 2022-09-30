@@ -5,7 +5,6 @@ import { server } from "..";
 import expressApp from "../server";
 import SearchController from "../server/controllers/search";
 import { AppDataSource } from "../data-source";
-import { randomUUID } from "node:crypto";
 
 export const testServer = supertest.agent(expressApp);
 
