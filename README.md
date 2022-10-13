@@ -12,6 +12,10 @@ In order to run frontend tests use `yarn cy:run` within terminal being inside fr
 
 In order to run frontend tests use `yarn dev` within terminal being inside backend folder
 
+Cypress tests are in `frontend/cypress/e2e`
+
+Jest tests are in `backend/src/__tests__`
+
 #### Backend test results 
 
 <img width="601" alt="Screen Shot 2022-09-30 at 11 53 10 AM" src="https://user-images.githubusercontent.com/57813114/193318168-a2a4035a-6194-46a4-9ece-c3e6b0cc17e4.png">
